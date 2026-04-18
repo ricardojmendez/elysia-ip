@@ -1,6 +1,6 @@
 # elysia-ip
 
-![badge](https://github.com/gaurishhs/elysia-ip/actions/workflows/npm-publish.yml/badge.svg)
+![badge](https://github.com/ricardojmendez/elysia-ip/actions/workflows/npm-publish.yml/badge.svg)
 
 Get the client ip address in Elysia.
 It works with Bun, Cloudflare, Fastly and other runtimes.
@@ -14,7 +14,7 @@ Requires Elysia v1.0.9 or above.
 For older elysia versions please install v0.0.7 of this package
 
 ```bash
-bun a elysia-ip
+bun a @ricardojmendez/elysia-ip
 ```
 
 ## Documentation
@@ -27,7 +27,7 @@ This plugin adds a `ip` property to the context object. It contains the client i
 
 ```ts
 import { Elysia } from "elysia";
-import { ip } from "elysia-ip";
+import { ip } from "@ricardojmendez/elysia-ip";
 
 new Elysia()
   .use(ip())
@@ -64,7 +64,7 @@ You can even specify your own headers if you want to as following
 
 ```ts
 import { Elysia } from "elysia";
-import { ip } from "elysia-ip";
+import { ip } from "@ricardojmendez/elysia-ip";
 
 new Elysia()
   .use(ip({ checkHeaders: ["X-Forwarded-For", "X-Real-IP"] }))
@@ -76,7 +76,7 @@ or
 
 ```ts
 import { Elysia } from "elysia";
-import { ip } from "elysia-ip";
+import { ip } from "@ricardojmendez/elysia-ip";
 
 new Elysia()
   .use(ip({ checkHeaders: "X-Forwarded-For" }))
@@ -88,7 +88,7 @@ You can also switch to Headers only mode by setting `headersOnly` to `true`. Thi
 
 ```ts
 import { Elysia } from "elysia";
-import { ip } from "elysia-ip";
+import { ip } from "@ricardojmendez/elysia-ip";
 
 new Elysia()
   .use(ip({ headersOnly: true }))
@@ -100,13 +100,24 @@ There might be cases where both are present, but you want to prioritize the IP f
 
 ```ts
 import { Elysia } from "elysia";
-import { ip } from "elysia-ip";
+import { ip } from "@ricardojmendez/elysia-ip";
 
 new Elysia()
   .use(ip({ headersFirst: true }))
   .get("/", ({ ip }) => ip)
   .listen(3000);
 ```
+
+## Publishing to GitHub Packages
+
+This repository is configured to publish to GitHub Packages on release creation.
+
+1. Bump the package version in `package.json` (or run `npm version patch|minor|major`).
+2. Push your commit and tag to the `release/github-packages` branch.
+3. Create a GitHub Release from that tag with target branch `release/github-packages`.
+
+The GitHub Actions workflow `npm-publish.yml` will build and publish to:
+`https://npm.pkg.github.com/@ricardojmendez/elysia-ip`.
 
 
 

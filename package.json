@@ -1,5 +1,5 @@
 {
-  "name": "elysia-ip",
+  "name": "@ricardojmendez/elysia-ip",
   "version": "1.0.20",
   "type": "module",
   "author": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaurishhs/elysia-ip"
+    "url": "https://github.com/ricardojmendez/elysia-ip"
   },
   "main": "./dist/index.js",
   "exports": {
@@ -19,13 +19,16 @@
     "default": "./dist/index.js"
   },
   "types": "./dist/index.d.ts",
-  "bugs": "https://github.com/gaurishhs/elysia-ip/issues",
-  "homepage": "https://github.com/gaurishhs/elysia-ip",
+  "bugs": "https://github.com/ricardojmendez/elysia-ip/issues",
+  "homepage": "https://github.com/ricardojmendez/elysia-ip",
   "keywords": ["elysia", "typescript", "ip"],
   "scripts": {
     "dev": "NODE_DEBUG=* bun run --hot example/basic.ts",
     "build": "rm -rf dist && tsc --project tsconfig.esm.json",
     "lint": "eslint . --ext .ts"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "devDependencies": {
